@@ -1,11 +1,12 @@
 {
-  "name": "crud_node",
+  "name": "social_app",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
+    "migration:run": "typeorm -- migration:run"
   },
   "dependencies": {
     "express": "^4.17.3",
