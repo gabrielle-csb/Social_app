@@ -1,6 +1,5 @@
 import { getRepository } from "typeorm"
-import { AccountEntity } from "../../entities/account-entity"
-import { PublicationEntity } from "../../entities/publication-entity"
+import { AccountEntity, PublicationEntity } from "../../entities"
 
 type UpdatePublicationRequest = {
   id: string
@@ -13,7 +12,7 @@ export class UpdatePublicationService {
     const publicationRepository = getRepository(PublicationEntity)
     const accountRepository = getRepository(AccountEntity)
     const publication = await publicationRepository.findOne({ where: { id } })
-    const account = await accountRepository.findOne({ where: { id : account_id} })
+    const account = await accountRepository.findOne({ where: { id: account_id } })
 
     if (!account) {
       return new Error("Account does not exist!")

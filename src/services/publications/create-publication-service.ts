@@ -1,6 +1,5 @@
 import { getRepository } from "typeorm"
-import { AccountEntity } from "../../entities/account-entity"
-import { PublicationEntity } from "../../entities/publication-entity"
+import { AccountEntity, PublicationEntity } from "../../entities"
 
 type PublicationRequest = {
   content: string
@@ -9,19 +8,17 @@ type PublicationRequest = {
 
 export class CreatePublicationService {
   async execute({ content, account_id }: PublicationRequest): Promise<PublicationRequest | Error> {
-    const publicationRepository = getRepository(PublicationEntity)
     const accountRepository = getRepository(AccountEntity)
     const account = await accountRepository.findOne({ where: { id: account_id } })
 
     if (!account) {
       return new Error("Account does not exists!")
     }
-
+    const publicationRepository = getRepository(PublicationEntity)
     const publication = publicationRepository.create({
       content, account_id
     })
 
-    await publicationRepository.save(publication)
-    return publication
+    return publicationRepository.save(publication)
   }
 }

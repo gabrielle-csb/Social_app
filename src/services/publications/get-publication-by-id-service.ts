@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm"
-import { PublicationEntity } from "../../entities/publication-entity"
+import { PublicationEntity } from "../../entities"
 
 export class GetPublicationByIdService {
   async execute(id: string): Promise<PublicationEntity | Error> {

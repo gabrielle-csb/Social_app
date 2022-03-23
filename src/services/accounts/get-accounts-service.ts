@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm"
-import { AccountEntity } from "../../entities/account-entity"
+import { AccountEntity } from "../../entities"
 
 export class GetAccountsService {
   async execute(): Promise<AccountEntity[]> {

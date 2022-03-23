@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreatePublicationService } from "../../services/publications/create-publication-service";
+import { CreatePublicationService } from "../../services/publications";
 
 export class CreatePublicationController {
   async handle(request: Request, response: Response): Promise<Response> {

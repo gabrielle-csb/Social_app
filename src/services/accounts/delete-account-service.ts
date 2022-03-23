@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm";
-import { AccountEntity } from "../../entities/account-entity";
+import { AccountEntity } from "../../entities";
 
 export class DeleteAccountService {
   async execute(id: string) {

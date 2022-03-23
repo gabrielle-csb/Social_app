@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { GetPublicationByIdService } from "../../services/publications/get-publication-by-id-service"
+import { GetPublicationByIdService } from "../../services/publications"
 
 export class GetPublicationByIdController {
   async handle(request: Request, response: Response): Promise<Response> {

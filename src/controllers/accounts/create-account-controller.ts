@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateAccountService } from "../../services/accounts/create-account-service";
+import { CreateAccountService } from "../../services/accounts";
 
 export class CreateAccountController {
   async handle(request: Request, response: Response): Promise<Response> {

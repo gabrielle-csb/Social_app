@@ -1,0 +1,5 @@
+export * from "./create-publication-controller"
+export * from "./get-publication-by-id-controller"
+export * from "./get-publications-controller"
+export * from "./update-publication-controller"
+export * from "./delete-publication-controller"

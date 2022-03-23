@@ -1,22 +1,15 @@
-import { CreateDateColumn, PrimaryColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm"
-import { v4 as uuid } from "uuid"
+import { CreateDateColumn, UpdateDateColumn, DeleteDateColumn, PrimaryGeneratedColumn } from "typeorm"
 
 export abstract class BaseEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string
 
   @CreateDateColumn()
   created_at: Date
-  
+
   @UpdateDateColumn()
-  updated_at:Date
+  updated_at: Date
 
   @DeleteDateColumn()
   deleted_at: Date | null
-
-  constructor() {
-    if (!this.id) {
-      this.id = uuid()
-    }
-  }
 }

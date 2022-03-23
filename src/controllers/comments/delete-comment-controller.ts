@@ -1,15 +1,11 @@
 import { Request, Response } from "express"
-import { DeletePublicationService } from "../../services/publications"
+import { DeleteCommentService } from "../../services/comments"
 
-type Headers = {
-  account_id: string
-}
-
-export class DeletePublicationController {
+export class DeleteCommentController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params
-    const { account_id } = request.headers as Headers
-    const service = new DeletePublicationService()
+    const { account_id } = request.body
+    const service = new DeleteCommentService()
     const result = await service.execute({ id, account_id })
 
     if (result instanceof Error) {

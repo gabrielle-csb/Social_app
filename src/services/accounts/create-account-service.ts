@@ -1,5 +1,5 @@
-import { getRepository, Repository } from "typeorm";
-import { AccountEntity } from "../../entities/account-entity";
+import { getRepository } from "typeorm";
+import { AccountEntity } from "../../entities";
 
 type AccountRequest = {
   name: string

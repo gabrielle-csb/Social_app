@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { GetAccountByIdService } from "../../services/accounts/get-account-by-id-service"
+import { GetAccountByIdService } from "../../services/accounts"
 
 export class GetAccountByIdController {
   async handle(request: Request, response: Response): Promise<Response> {

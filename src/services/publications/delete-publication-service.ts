@@ -1,6 +1,5 @@
 import { getRepository } from "typeorm";
-import { AccountEntity } from "../../entities/account-entity";
-import { PublicationEntity } from "../../entities/publication-entity";
+import { AccountEntity, PublicationEntity } from "../../entities"
 
 type DeletePublicationRequest = {
   id: string

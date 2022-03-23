@@ -1,12 +1,12 @@
 import { Request, Response } from "express"
-import { UpdatePublicationService } from "../../services/publications"
+import { UpdateCommentService } from "../../services/comments"
 
-export class UpdatePublicationController {
+export class UpdateCommentController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params
-    const { content, account_id } = request.body
-    const service = new UpdatePublicationService()
-    const result = await service.execute({ content, account_id, id })
+    const { account_id, text } = request.body
+    const service = new UpdateCommentService()
+    const result = await service.execute({ id, text, account_id })
 
     if (result instanceof Error) {
       return response.status(400).json({ error: result.message })

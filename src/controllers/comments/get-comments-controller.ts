@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
-import { GetAccountsService } from "../../services/accounts"
+import { GetCommentsService } from "../../services/comments"
 
-export class GetAccountsController {
+export class GetCommentsController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const service = new GetAccountsService()
+    const service = new GetCommentsService()
     const result = await service.execute()
 
     return response.json(result)
