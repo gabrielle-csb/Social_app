@@ -1,11 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class publicationSchema1647637142791 implements MigrationInterface {
-
+export class replyCommentShema1648499686043 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "publications",
+        name: "reply_comment",
         columns: [
           {
             name: "id",
@@ -13,8 +12,16 @@ export class publicationSchema1647637142791 implements MigrationInterface {
             isPrimary: true
           },
           {
-            name: "content",
+            name: "text",
             type: "varchar",
+          },
+          {
+            name: "publication_id",
+            type: "uuid"
+          },
+          {
+            name: "comment_id",
+            type: "uuid"
           },
           {
             name: "account_id",
@@ -36,14 +43,22 @@ export class publicationSchema1647637142791 implements MigrationInterface {
             isNullable: true
           }
         ],
-
-        //CHAVE ESTRANGEIRA
-        //referencia identificador de outra coluna no banco de dados.
         foreignKeys: [
           {
-            name: "fk_account_publication",
+            name: "fk_account_reply",
             columnNames: ["account_id"],
             referencedTableName: "accounts",
+            referencedColumnNames: ["id"]
+          },
+          {
+            name: "fk_publication_reply",
+            columnNames: ["publication_id"],
+            referencedTableName: "publications",
+            referencedColumnNames: ["id"]
+          },          {
+            name: "fk_comment_reply",
+            columnNames: ["comment_id"],
+            referencedTableName: "comments",
             referencedColumnNames: ["id"]
           }
         ]
@@ -52,6 +67,7 @@ export class publicationSchema1647637142791 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("publications")
+    await queryRunner.dropTable("reply_comment")
   }
+
 }

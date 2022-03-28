@@ -16,6 +16,10 @@ export class UpdateAccountService {
       return new Error("Account does not exist!")
     }
 
+    //Condições de alteração
+    //account.email vai receber outro email como parametro
+    //? se esse email for true, retorne o novo email
+    //: se não, retorne o email anterior
     account.email = email ? email : account.email
     account.password = password ? password : account.password
 

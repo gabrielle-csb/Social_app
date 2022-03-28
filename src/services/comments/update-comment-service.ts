@@ -10,11 +10,13 @@ type UpdateCommentRequest = {
 export class UpdateCommentService {
   async execute({ id, text, account_id }: UpdateCommentRequest): Promise<CommentEntity | Error> {
     const commentRepository = getRepository(CommentEntity)
+
+    //Realiza consulta no banco de dados (criar construtor de consultas)
     const comment = await commentRepository
-      .createQueryBuilder("comment")
-      .innerJoinAndSelect("comment.account", "account")
-      .where("comment.id = :id", { id })
-      .getOne()
+      .createQueryBuilder("comment") //ALIAS (ELHAS), dá um apelido para a manipulação dos dados
+      .innerJoinAndSelect("comment.account", "account") //relaciona o comentario com a conta, onde ambos devem existir
+      .where("comment.id = :id", { id }) //busca pelo id
+      .getOne() //pega o resultado esperado pela consulta
 
     if (!comment) {
       return new Error("Comment does not exist!")
