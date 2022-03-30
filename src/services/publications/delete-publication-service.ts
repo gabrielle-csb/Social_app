@@ -14,7 +14,7 @@ export class DeletePublicationService {
     const account = await accountRepository.findOne({ where: { id: account_id } })
 
     if (!account) {
-      return new Error("Account does not exist!")
+      return new Error("Account does not identified!")
     }
 
     if (!publication) {
@@ -22,7 +22,7 @@ export class DeletePublicationService {
     }
 
     if (account.id !== publication.account_id) {
-      return new Error("Only the account that posted can change the post.")
+      return new Error("Only the account that posted can delete the post!")
     }
 
     publication.deleted_at = new Date()

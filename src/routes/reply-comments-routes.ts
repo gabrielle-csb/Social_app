@@ -1,13 +1,12 @@
 import { Router } from "express"
-import { CreateCommentController, DeleteCommentController, GetCommentsByPublicationIdController, GetCommentsController, UpdateCommentController } from "../controllers/comments"
-import { CreateReplyCommentsController } from "../controllers/reply-comments"
+import { CreateReplyCommentsController, DeleteReplyCommentController, GetReplyCommentByCommentIdController, GetReplyCommentsController, UpdateReplyCommentController } from "../controllers/reply-comments"
 
 const replyCommentsRoutes = Router()
 
 replyCommentsRoutes.post("/", new CreateReplyCommentsController().handle)
-//commentsRoutes.get("/", new GetCommentsController().handle)
-//commentsRoutes.put("/:id", new UpdateCommentController().handle)
-//commentsRoutes.get("/publications/:publication_id", new GetCommentsByPublicationIdController().handle)
-//commentsRoutes.delete("/:id", new DeleteCommentController().handle)
+replyCommentsRoutes.get("/", new GetReplyCommentsController().handle)
+replyCommentsRoutes.put("/:id", new UpdateReplyCommentController().handle)
+replyCommentsRoutes.get("/comments/:comment_id", new GetReplyCommentByCommentIdController().handle)
+replyCommentsRoutes.delete("/:id", new DeleteReplyCommentController().handle)
 
 export { replyCommentsRoutes }

@@ -1,6 +1,4 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm"
-import { accountRoutes } from "../routes/accounts-routes"
-import { commentsRoutes } from "../routes/comments-routes"
 import { AccountEntity } from "./account-entity"
 import { BaseEntity } from "./base-entity"
 import { CommentEntity } from "./comment-entity"
@@ -25,7 +23,7 @@ export class ReplyCommentEntity extends BaseEntity {
   account: AccountEntity
 
   @JoinColumn({ name: "publication_id" })
-  @ManyToOne(() => PublicationEntity, publication => publication.comments)
+  @ManyToOne(() => PublicationEntity, publication => publication.reply_comments)
   publication: PublicationEntity
 
   @JoinColumn({ name: "comment_id" })
